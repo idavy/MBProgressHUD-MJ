@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
 
   s.source_files = 'MBProgressHUD-MJ/**/*'
   # s.resource_bundles = {
-    'MBProgressHUDExtension' => ['Pod/Assets/*.png']
-  }
+  #  'MBProgressHUDExtension' => ['Pod/Assets/*.png']
+  # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
