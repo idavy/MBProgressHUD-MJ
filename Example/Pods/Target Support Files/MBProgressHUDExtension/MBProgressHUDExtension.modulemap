@@ -1,6 +1,0 @@
-framework module MBProgressHUDExtension {
-  umbrella header "MBProgressHUDExtension-umbrella.h"
-
-  export *
-  module * { export * }
-}
