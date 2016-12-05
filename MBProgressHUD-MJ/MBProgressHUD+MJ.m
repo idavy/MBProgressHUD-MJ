@@ -9,12 +9,13 @@
 
 @implementation MBProgressHUD (MJ)
 #pragma mark 显示信息
-+ (void)show:(NSString *)text icon:(NSString *)icon view:(UIView *)view
++ (void)show:(NSString *)text icon:(NSString *)icon view:(UIView *)view afterDelay:(NSTimeInterval)delay
 {
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.labelText = text;
+    hud.detailsLabelText = text;
+    hud.detailsLabelFont = [UIFont systemFontOfSize:16];
     // 设置图片
     hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
     // 再设置模式
@@ -24,7 +25,7 @@
     hud.removeFromSuperViewOnHide = YES;
     
     // 1秒之后再消失
-    [hud hide:YES afterDelay:0.7];
+    [hud hide:YES afterDelay:afterDelay];
 }
 
 #pragma mark 显示错误信息
@@ -37,6 +38,14 @@
     [self show:success icon:@"success.png" view:view];
 }
 
++ (void)showError:(NSString *)error toView:(UIView *)view afterDelay:(NSTimeInterval)delay{
+    [self show:error icon:@"error.png" view:view afterDelay:delay];
+}
+
++ (void)showSuccess:(NSString *)success toView:(UIView *)view afterDelay:(NSTimeInterval)delay
+{
+    [self show:success icon:@"success.png" view:view afterDelay:delay];
+}
 #pragma mark 显示一些信息
 + (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view {
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
@@ -58,6 +67,16 @@
 + (void)showError:(NSString *)error
 {
     [self showError:error toView:nil];
+}
+
++ (void)showSuccess:(NSString *)success afterDelay:(NSTimeInterval)delay
+{
+    [self showSuccess:success toView:nil afterDelay:delay];
+}
+
++ (void)showError:(NSString *)error afterDelay:(NSTimeInterval)delay
+{
+    [self showError:error toView:nil afterDelay:delay];
 }
 
 + (MBProgressHUD *)showMessage:(NSString *)message
