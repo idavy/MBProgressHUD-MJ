@@ -25,17 +25,17 @@
     hud.removeFromSuperViewOnHide = YES;
     
     // 1秒之后再消失
-    [hud hide:YES afterDelay:afterDelay];
+    [hud hide:YES afterDelay:delay];
 }
 
 #pragma mark 显示错误信息
 + (void)showError:(NSString *)error toView:(UIView *)view{
-    [self show:error icon:@"error.png" view:view];
+    [self show:error icon:@"error.png" view:view afterDelay:0.7];
 }
 
 + (void)showSuccess:(NSString *)success toView:(UIView *)view
 {
-    [self show:success icon:@"success.png" view:view];
+    [self show:success icon:@"success.png" view:view afterDelay:1.0];
 }
 
 + (void)showError:(NSString *)error toView:(UIView *)view afterDelay:(NSTimeInterval)delay{
